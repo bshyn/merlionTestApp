@@ -10,5 +10,5 @@ enum State {
 IN_CHARGE, SHIPPED, DELIVERED
 }
 relationship ManyToOne {
-Product{product} to Sales
+Sales{product} to Product
 }
