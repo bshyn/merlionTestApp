@@ -42,9 +42,6 @@ export const Product = (props: IProductProps) => {
                 <th>
                   <Translate contentKey="testApp.product.price">Price</Translate>
                 </th>
-                <th>
-                  <Translate contentKey="testApp.product.product">Product</Translate>
-                </th>
                 <th />
               </tr>
             </thead>
@@ -58,7 +55,6 @@ export const Product = (props: IProductProps) => {
                   </td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
-                  <td>{product.product ? <Link to={`sales/${product.product.id}`}>{product.product.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${product.id}`} color="info" size="sm">

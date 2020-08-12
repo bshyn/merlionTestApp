@@ -1,6 +1,5 @@
 package merliontechs.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -29,10 +28,6 @@ public class Product implements Serializable {
 
     @Column(name = "price", precision = 21, scale = 2)
     private BigDecimal price;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "products", allowSetters = true)
-    private Sales product;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -67,19 +62,6 @@ public class Product implements Serializable {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public Sales getProduct() {
-        return product;
-    }
-
-    public Product product(Sales sales) {
-        this.product = sales;
-        return this;
-    }
-
-    public void setProduct(Sales sales) {
-        this.product = sales;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

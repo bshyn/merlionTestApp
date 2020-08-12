@@ -42,6 +42,9 @@ export const Sales = (props: ISalesProps) => {
                 <th>
                   <Translate contentKey="testApp.sales.date">Date</Translate>
                 </th>
+                <th>
+                  <Translate contentKey="testApp.sales.product">Product</Translate>
+                </th>
                 <th />
               </tr>
             </thead>
@@ -57,6 +60,7 @@ export const Sales = (props: ISalesProps) => {
                     <Translate contentKey={`testApp.State.${sales.state}`} />
                   </td>
                   <td>{sales.date ? <TextFormat type="date" value={sales.date} format={APP_LOCAL_DATE_FORMAT} /> : null}</td>
+                  <td>{sales.product ? <Link to={`product/${sales.product.id}`}>{sales.product.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${sales.id}`} color="info" size="sm">

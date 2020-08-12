@@ -37,6 +37,10 @@ export const SalesDetail = (props: ISalesDetailProps) => {
             </span>
           </dt>
           <dd>{salesEntity.date ? <TextFormat value={salesEntity.date} type="date" format={APP_LOCAL_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <Translate contentKey="testApp.sales.product">Product</Translate>
+          </dt>
+          <dd>{salesEntity.product ? salesEntity.product.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/sales" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

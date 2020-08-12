@@ -37,10 +37,6 @@ export const ProductDetail = (props: IProductDetailProps) => {
             </span>
           </dt>
           <dd>{productEntity.price}</dd>
-          <dt>
-            <Translate contentKey="testApp.product.product">Product</Translate>
-          </dt>
-          <dd>{productEntity.product ? productEntity.product.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/product" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

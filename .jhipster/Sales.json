@@ -11,7 +11,15 @@
       "fieldType": "LocalDate"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "sales",
+      "relationshipName": "product",
+      "otherEntityField": "id"
+    }
+  ],
   "changelogDate": "20200812011354",
   "entityTableName": "sales",
   "dto": "no",

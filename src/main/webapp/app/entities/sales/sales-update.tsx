@@ -7,6 +7,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IProduct } from 'app/shared/model/product.model';
+import { getEntities as getProducts } from 'app/entities/product/product.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './sales.reducer';
 import { ISales } from 'app/shared/model/sales.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -15,9 +17,10 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface ISalesUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const SalesUpdate = (props: ISalesUpdateProps) => {
+  const [productId, setProductId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { salesEntity, loading, updating } = props;
+  const { salesEntity, products, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/sales');
@@ -29,6 +32,8 @@ export const SalesUpdate = (props: ISalesUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
+
+    props.getProducts();
   }, []);
 
   useEffect(() => {
@@ -97,6 +102,21 @@ export const SalesUpdate = (props: ISalesUpdateProps) => {
                 </Label>
                 <AvField id="sales-date" type="date" className="form-control" name="date" />
               </AvGroup>
+              <AvGroup>
+                <Label for="sales-product">
+                  <Translate contentKey="testApp.sales.product">Product</Translate>
+                </Label>
+                <AvInput id="sales-product" type="select" className="form-control" name="product.id">
+                  <option value="" key="0" />
+                  {products
+                    ? products.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/sales" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -119,6 +139,7 @@ export const SalesUpdate = (props: ISalesUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
+  products: storeState.product.entities,
   salesEntity: storeState.sales.entity,
   loading: storeState.sales.loading,
   updating: storeState.sales.updating,
@@ -126,6 +147,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getProducts,
   getEntity,
   updateEntity,
   createEntity,

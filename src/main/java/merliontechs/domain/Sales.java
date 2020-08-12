@@ -1,5 +1,6 @@
 package merliontechs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -31,6 +32,10 @@ public class Sales implements Serializable {
 
     @Column(name = "date")
     private LocalDate date;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "sales", allowSetters = true)
+    private Product product;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -65,6 +70,19 @@ public class Sales implements Serializable {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public Sales product(Product product) {
+        this.product = product;
+        return this;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

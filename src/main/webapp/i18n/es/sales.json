@@ -17,7 +17,8 @@
         "title": "Sales"
       },
       "state": "State",
-      "date": "Date"
+      "date": "Date",
+      "product": "Product"
     }
   }
 }

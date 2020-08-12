@@ -10,15 +10,7 @@
       "fieldType": "BigDecimal"
     }
   ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "sales",
-      "otherEntityRelationshipName": "product",
-      "relationshipName": "product",
-      "otherEntityField": "id"
-    }
-  ],
+  "relationships": [],
   "changelogDate": "20200812011254",
   "entityTableName": "product",
   "dto": "no",
