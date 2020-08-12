@@ -1,0 +1,26 @@
+{
+  "name": "Sales",
+  "fields": [
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValues": "IN_CHARGE,SHIPPED,DELIVERED"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200812011354",
+  "entityTableName": "sales",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
